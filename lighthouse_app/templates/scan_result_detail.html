@@ -1,0 +1,25 @@
+<!-- lighthouse_app/templates/scan_result_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Result Detail</title>
+</head>
+<body>
+    <h1>Scan Result Detail</h1>
+    <h2>Latest Scan Result</h2>
+    <p>User: {{ result.user }}, URL: {{ result.url }}</p>
+    <p>Report: {{ result.report | safe }}</p>
+
+    <h2>Previous Scan Results</h2>
+    <ul>
+        {% for previous_result in results %}
+            <li>
+                <a href="{% url 'scan-result-detail' previous_result.id %}">
+                    User: {{ previous_result.user }}, URL: {{ previous_result.url }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
